@@ -18,6 +18,16 @@ spec:
       - image: nginx
         name: nginx
         env:
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: dbcred
+              key: db_host
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: dbcred
+              key: db_name
         - name: DB_USER
           valueFrom:
             secretKeyRef:
@@ -28,3 +38,5 @@ spec:
             secretKeyRef:
               name: dbcred
               key: password
+        
+
