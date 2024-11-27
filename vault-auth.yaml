@@ -2,7 +2,7 @@ apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultAuth
 metadata:
   name: static-auth
-  namespace: webapp
+  namespace: development
 spec:
   # vaultConnectionRef: default
   method: kubernetes
