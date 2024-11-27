@@ -9,6 +9,6 @@ spec:
   mount: kubernetes
   kubernetes:
     role: webapp
-    serviceAccount: dev-vault-svc-account
+    serviceAccount: default
     audiences:
       - vault
