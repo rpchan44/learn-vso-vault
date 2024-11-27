@@ -10,6 +10,11 @@ helm repo update
 ```
 helm install vault hashicorp/vault -n vault --create-namespace --set server.dev.enabled=true
 ```
+### Deploy VSO
+```
+helm install vault-secrets-operator hashicorp/vault-secrets-operator -n vault-secrets-operator-system \
+    --create-namespace --values vso-values.yaml
+```
 
 ### Configure kubernetes auth
 
@@ -23,12 +28,6 @@ helm install vault hashicorp/vault -n vault --create-namespace --set server.dev.
     vault write auth/kubernetes/config \
     kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
     ```
-
-### Deploy VSO
-```
-helm install vault-secrets-operator hashicorp/vault-secrets-operator -n vault-secrets-operator-system \
-    --create-namespace --values vso-values.yaml
-```
 
 ### VSO with kvv2 secrets
 
