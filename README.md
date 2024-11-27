@@ -44,7 +44,7 @@ First, exec into the vault pod.
     ```
 3. Add policy to read the secret
     ```
-    vault policy write dbcred - << EOF
+    vault policy write read_only_policy - << EOF
         path "kv-v2/data/webapp/dbcred" {
         capabilities = ["read"]
         }
@@ -61,7 +61,7 @@ First, exec into the vault pod.
     vault write auth/kubernetes/role/webapp \
       bound_service_account_names=default \
       bound_service_account_namespaces=development \
-      policies=default,dbcred \
+      policies=read_only_policy \
       audience=vault \
       ttl=24h
     ```
