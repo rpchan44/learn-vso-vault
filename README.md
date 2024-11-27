@@ -57,7 +57,7 @@ First, exec into the vault pod.
 1. Create a role to enable access to the secret
     ```
     vault write auth/kubernetes/role/webapp \
-      bound_service_account_names=dev-vault-svc-account \
+      bound_service_account_names=default \
       bound_service_account_namespaces=development \
       policies=default,dbcred \
       audience=vault \
