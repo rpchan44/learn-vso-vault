@@ -59,11 +59,11 @@ First, exec into the vault pod.
    *  this is not default service account in default namespace (bound_service_account_names)
     ```
     vault write auth/kubernetes/role/webapp \
-      bound_service_account_names=default \           
-      bound_service_account_namespaces=development \ 
+      bound_service_account_names=default \
+      bound_service_account_namespaces=development \
       policies=default,dbcred \
       audience=vault \
-      ttl=1h
+      ttl=24h
     ```
 
 ### VSO with dynamic database secrets
