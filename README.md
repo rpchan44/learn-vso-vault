@@ -55,10 +55,13 @@ First, exec into the vault pod.
 #### Update application role to access kvv2 secrets
 
 1. Create a role to enable access to the secret
+   * Notes
+   *  every namespace has default Service Account upon creation of namespace
+   *  this is not default service account in default namespace (bound_service_account_namespaces)
     ```
     vault write auth/kubernetes/role/webapp \
-      bound_service_account_names=default \
-      bound_service_account_namespaces=development \
+      bound_service_account_names=default \           
+      bound_service_account_namespaces=development \ 
       policies=default,dbcred \
       audience=vault \
       ttl=24h
