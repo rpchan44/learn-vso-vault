@@ -63,7 +63,7 @@ First, exec into the vault pod.
       bound_service_account_namespaces=development \ 
       policies=default,dbcred \
       audience=vault \
-      ttl=24h
+      ttl=1h
     ```
 
 ### VSO with dynamic database secrets
