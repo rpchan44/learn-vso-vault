@@ -15,12 +15,13 @@ helm install vault hashicorp/vault -n vault --create-namespace --set server.dev.
 
 1. Enable kubernetes auth backend
     ```
+    kubectl exec -it vault-0 -n vault -- /bin/sh
     vault auth enable kubernetes
     ```
 2. Configure kubernetes endpoint
     ```
     vault write auth/kubernetes/config \
-    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443”
+    kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"
     ```
 
 ### Deploy VSO
@@ -35,6 +36,7 @@ helm install vault-secrets-operator hashicorp/vault-secrets-operator -n vault-se
 First, exec into the vault pod.
 1. Enable kvv2 secrets engine
     ```
+    kubectl exec -it vault-0 -n vault -- /bin/sh
     vault secrets enable kv-v2
     ```
 2. Add secret for the webapp
