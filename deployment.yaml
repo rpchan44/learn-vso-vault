@@ -2,38 +2,32 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: fakeapp
-  name: fakeapp
-  namespace: fakeapp
+    app: webapp
+  name: webapp
+  namespace: development
 spec:
   selector:
     matchLabels:
-      app: fakeapp
+      app: webapp
   template:
     metadata:
       labels:
-        app: fakeapp
+        app: webapp
     spec:
       containers:
       - image: nginx
         name: nginx
         env:
-        - name: SECRET_USERNAME
+        - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: mysecret
+              name: dbcred
               key: username
-        - name: SECRET_PASSWORD
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysecret
+              name: dbcred
               key: password
-        - name: POSTGRES_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: postgres
-              key: username
-        - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres
