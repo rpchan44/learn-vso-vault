@@ -35,7 +35,6 @@ helm install vault-secrets-operator hashicorp/vault-secrets-operator -n vault-se
 First, exec into the vault pod.
 1. Enable kvv2 secrets engine
     ```
-    kubectl exec -it vault-0 -n vault -- /bin/sh
     vault secrets enable kv-v2
     ```
 2. Add secret for the webapp
