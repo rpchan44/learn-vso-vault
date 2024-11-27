@@ -39,12 +39,12 @@ First, exec into the vault pod.
     ```
 2. Add secret for the webapp
     ```
-    vault kv put kv-v2/webapp/mysecret username=foo password=bar
+    vault kv put kv-v2/webapp/dbcred db_host=192.168.994 db_name=development username=demo password=password
     ```
 3. Add policy to read the secret
     ```
-    vault policy write mysecret - << EOF
-        path "kv-v2/data/webapp/mysecret" {
+    vault policy write dbcred - << EOF
+        path "kv-v2/data/webapp/dbcred" {
         capabilities = ["read"]
         }
     EOF
@@ -55,9 +55,9 @@ First, exec into the vault pod.
 1. Create a role to enable access to the secret
     ```
     vault write auth/kubernetes/role/webapp \
-      bound_service_account_names=default \
+      bound_service_account_names=dev-vault-svc-account \
       bound_service_account_namespaces=development \
-      policies=default,mysecret \
+      policies=default,dbcred \
       audience=vault \
       ttl=24h
     ```
@@ -132,7 +132,7 @@ First, exec into the vault pod.
     vault write auth/kubernetes/role/webapp \
         bound_service_account_names=default \
         bound_service_account_namespaces=webapp \
-        policies=default,mysecret,webapp-role  \
+        policies=default,dbcred,webapp-role  \
         audience=vault \
         ttl=24h
     ```
