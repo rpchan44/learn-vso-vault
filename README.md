@@ -1,6 +1,4 @@
-## Fetch vault secrets using VSO
-## This is better implementation than sidecar
-## TODO: Vault in Production mode still need to tackle
+# VSO Vault Implementation better implementation than sidecar!
 
 ### Add vault helm repository
 ```
