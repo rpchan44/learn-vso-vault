@@ -143,7 +143,7 @@ First, exec into the vault pod.
 ### Deploy manifests
 1. Create new namespace
     ```
-    kubectl create ns webapp
+    kubectl create ns development
     ```
 2. Apply VaultAuth
     ```
