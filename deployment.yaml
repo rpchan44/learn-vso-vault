@@ -28,8 +28,3 @@ spec:
             secretKeyRef:
               name: dbcred
               key: password
-          valueFrom:
-            secretKeyRef:
-              name: postgres
-              key: password
-        resources: {}
